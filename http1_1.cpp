@@ -135,9 +135,11 @@ void http1_1_handler(int clientDescriptor) {
 
     std::string fileBuf;
 
-    if (get_file(sitePath + requestPath, fileBuf) == -1) {
-        process_error(clientDescriptor, NOT_FOUND);
-        return;
+    char buf[BUF_SIZE];
+
+    FILE *file = popen(("python3 cgi.py " + sitePath + requestPath).c_str(), "r");
+    while (fgets(buf, BUF_SIZE, file) != NULL) {
+        fileBuf += std::string(buf);
     }
 
     http_reply(clientDescriptor, OK, mime, fileBuf);

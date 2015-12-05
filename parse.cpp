@@ -33,6 +33,8 @@ std::string define_MIME(const std::string &file) {
     } else if (ext == "png" || ext == "gif" ||
                ext == "svg" || ext == "tiff") {
         return "image/" + ext;
+    } else if (ext == "php") {
+        return "text/html";
     } else {
         return "none";
     }

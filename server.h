@@ -34,8 +34,6 @@ public:
     void start_server(uint32_t ip, uint16_t port, std::function<void(int)> handler);
     void stop_server();
 
-    friend void echo_handler(int clientDescriptor);
-
     ~HttpServer();
 };
 
