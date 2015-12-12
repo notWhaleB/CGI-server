@@ -3,7 +3,7 @@
 void HttpServer::_server_listener(int servDescriptor, std::function<void(int)> handler) {
     pollfd fd[1];
     fd[0].fd = servDescriptor;
-    fd[0].events = POLL_IN;
+    fd[0].events = POLLIN;
 
     while (!isStop) {
         if (poll(fd, 1, POLL_TIMEOUT) == 1) {
