@@ -8,4 +8,9 @@ project (${PROJECT})
 
 file( GLOB SOURCES *.cpp )
 file( GLOB HEADERS *.h )
+
+find_package (Threads)
+
 add_executable (${PROJECT} ${HEADERS} ${SOURCES})
+
+target_link_libraries (${PROJECT} ${CMAKE_THREAD_LIBS_INIT})

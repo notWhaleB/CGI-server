@@ -137,7 +137,7 @@ void http1_1_handler(int clientDescriptor) {
 
     char buf[BUF_SIZE];
 
-    FILE *file = popen(("python3 cgi.py " + sitePath + requestPath).c_str(), "r");
+    FILE *file = popen(("python3 " + runPath + "cgi.py " + runPath + sitePath + requestPath).c_str(), "r");
     while (fgets(buf, BUF_SIZE, file) != NULL) {
         fileBuf += std::string(buf);
     }

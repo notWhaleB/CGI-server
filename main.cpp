@@ -2,15 +2,24 @@
 
 std::string runPath;
 
+#define DEFAULT_PORT 40000
+
 int main(int argc, const char *argv[]) {
     runPath = argv[0];
     while(runPath.back() != '/') {
         runPath.pop_back();
     }
 
+    uint16_t serverPort;
+    if (argc < 2) {
+        serverPort = DEFAULT_PORT;
+    } else {
+        serverPort = static_cast<uint16_t>(strtol(argv[1], nullptr, 10));
+    }
+
     HttpServer serv;
     std::cout << "Starting server..." << std::endl;
-    serv.start_server(INADDR_ANY, 40000, http1_1_handler);
+    serv.start_server(INADDR_ANY, serverPort, http1_1_handler);
     std::cout << "Server started." << std::endl;
 
     std::string cmd;
