@@ -10,7 +10,7 @@ int wr_socket(int domain, int type, int protocol) {
 };
 
 void wr_bind(int desc, struct sockaddr_in *addr) {
-    if (bindresvport(desc, addr) == -1 && errno != 0) {
+    if (bind(desc, (struct sockaddr *)addr, sizeof(*addr)) == -1 && errno != 0) {
         perror("Bind error: ");
     }
 }
