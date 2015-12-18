@@ -20,7 +20,7 @@ int main(int argc, const char *argv[]) {
     HttpServer serv;
     std::cout << "Starting server..." << std::endl;
     serv.start_server(INADDR_ANY, serverPort, http1_1_handler);
-    std::cout << "Server started." << std::endl;
+    std::cout << "Server started on 0.0.0.0:" << serverPort << "." << std::endl;
 
     std::string cmd;
     while (std::cin >> cmd) {
