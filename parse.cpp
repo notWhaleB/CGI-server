@@ -35,7 +35,9 @@ std::string define_MIME(const std::string &file) {
         return "image/" + ext;
     } else if (ext == "php") {
         return "text/html";
-    } else {
+    } else if (ext == "") {
         return "none";
+    } else {
+        return "text/plain";
     }
 }
