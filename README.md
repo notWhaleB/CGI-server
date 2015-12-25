@@ -20,7 +20,7 @@ sudo apt-get install php5-cli
 ```
 ./CGIServer port document_root cgi_root
 ```
-port – порт, на котором открывается соединение (40000 по умолчанию).
-document_root – директория с сайтом (webserver/site/ по умолчанию).
-cgi_root – директория с cgi.py и файлами ошибок (webserver/ по умолчанию).
+* port – порт, на котором открывается соединение (40000 по умолчанию).
+* document_root – директория с сайтом (webserver/site/ по умолчанию).
+* cgi_root – директория с cgi.py и файлами ошибок (webserver/ по умолчанию).
 
