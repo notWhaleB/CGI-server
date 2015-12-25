@@ -18,6 +18,12 @@ std::vector<std::string> split(const std::string &s, char delim) {
 std::string define_MIME(const std::string &file) {
     std::string ext;
     for (auto i = file.rbegin(); i != file.rend() && *i != '.'; ++i) {
+        if (*i == '/' || ++i == file.rend()) {
+            ext = "";
+            break;
+        }
+        i--;
+
         ext.push_back(*i);
     }
     std::reverse(ext.begin(), ext.end());

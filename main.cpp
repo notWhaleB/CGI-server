@@ -1,6 +1,6 @@
 #include "main.h"
 
-std::string runPath;
+std::string runPath, sitePath, CGIPath;
 
 #define DEFAULT_PORT 40000
 
@@ -15,6 +15,24 @@ int main(int argc, const char *argv[]) {
         serverPort = DEFAULT_PORT;
     } else {
         serverPort = static_cast<uint16_t>(strtol(argv[1], nullptr, 10));
+    }
+
+    if (argc < 3) {
+        sitePath = runPath + "webserver/site/";
+    } else {
+        sitePath = argv[2];
+        if (sitePath[0] != '/') {
+            sitePath = runPath + sitePath;
+        }
+    }
+
+    if (argc < 4) {
+        CGIPath = runPath + "webserver/";
+    } else {
+        CGIPath = argv[3];
+        if (CGIPath[0] != '/') {
+            CGIPath = runPath + CGIPath;
+        }
     }
 
     HttpServer serv;

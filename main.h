@@ -10,5 +10,7 @@
 #include "wrappers.h"
 
 extern std::string runPath;
+extern std::string sitePath;
+extern std::string CGIPath;
 
 #endif

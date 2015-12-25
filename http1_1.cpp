@@ -1,8 +1,8 @@
 #include "http1_1.h"
 
 const size_t READS_LIMIT = 256;
+
 std::string homePageFile = "index.html";
-std::string sitePath = "site/";
 
 void http_reply(int clientDescriptor, HttpResponse response, const std::string &MIME, std::string &content) {
     std::string header;
@@ -135,7 +135,7 @@ void http1_1_handler(int clientDescriptor) {
 
     std::string fileBuf;
 
-    FILE *file = popen(("python3 " + runPath + "cgi.py " + runPath + sitePath + requestPath).c_str(), "r");
+    FILE *file = popen(("python3 " + CGIPath + "cgi.py " + sitePath + requestPath + " " + CGIPath).c_str(), "r");
     while (!feof(file)) {
         fileBuf += fgetc(file);
     }
