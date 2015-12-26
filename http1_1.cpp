@@ -45,7 +45,7 @@ int get_file(std::string path, std::string &buf) {
 
 void process_error(int clientDescriptor, HttpResponse error) {
     std::string buf;
-    get_file(std::to_string(error) + ".html", buf);
+    get_file(CGIPath + std::to_string(error) + ".html", buf);
     http_reply(clientDescriptor, error, "text/html", buf);
     wr_close(clientDescriptor);
 }
